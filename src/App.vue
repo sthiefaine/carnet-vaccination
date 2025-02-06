@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import HeaderSite from './components/Header/HeaderSite.vue'
 import FooterSite from './components/Footer/FooterSite.vue'
+import TableSite from './components/Table/TableSite.vue'
 </script>
 
 <template>
@@ -11,6 +12,7 @@ import FooterSite from './components/Footer/FooterSite.vue'
 
     <section>
       <h3>Liste des vaccins</h3>
+      <TableSite />
     </section>
   </main>
   <FooterSite />
