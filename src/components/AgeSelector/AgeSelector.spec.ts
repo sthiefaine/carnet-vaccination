@@ -3,13 +3,17 @@ import { describe, it, expect, beforeEach } from 'vitest'
 import { flushPromises, mount } from '@vue/test-utils'
 import AgeSelector from './AgeSelector.vue'
 import { createPinia } from 'pinia'
+import { afterEach } from 'node:test'
+import { useAgeStore } from '@/stores/ageStore'
 
 describe('Age Selector render', () => {
   let pinia: ReturnType<typeof createPinia>
   let wrapper: ReturnType<typeof mount>
+  let store: ReturnType<typeof useAgeStore>
 
   // Action avant chaque test
-  beforeEach(() => {
+  beforeEach(async () => {
+    localStorage.clear()
     pinia = createPinia()
 
     wrapper = mount(AgeSelector, {
@@ -17,9 +21,18 @@ describe('Age Selector render', () => {
         plugins: [pinia],
       },
     })
+
+    store = useAgeStore()
+    store.setAge(1, 'ans')
+    await flushPromises()
   })
 
-  it('age button is active', () => {
+  afterEach(() => {
+    wrapper.unmount()
+    localStorage.clear()
+  })
+
+  it('age button is active', async () => {
     const button = wrapper.find('.button-active')
     expect(button.text()).toBe('Ans')
   })
@@ -27,12 +40,14 @@ describe('Age Selector render', () => {
   it('click on button month', async () => {
     const button = wrapper.find('button')
     await button.trigger('click')
+
     expect(wrapper.find('.button-active').text()).toBe('Mois')
   })
 
   it('age >= 24 button need to be "Ans', async () => {
     const input = wrapper.find('input')
     await input.setValue(24)
+    await flushPromises()
 
     expect(input.element.value).toBe('24')
 

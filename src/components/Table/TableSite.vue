@@ -34,7 +34,6 @@ const findDateKey = (age: number, unit: 'ans' | 'mois'): string => {
 }
 
 const scrollToAge = () => {
-  console.log('scrollToAge', ageStore.age)
   const dateToScroll = findDateKey(ageStore.age, ageStore.monthOrYear)
   const cell = dateRefs.value[dateToScroll]
   if (cell) {
