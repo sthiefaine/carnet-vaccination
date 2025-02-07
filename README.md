@@ -14,14 +14,21 @@ Mise en place du planing des vaccinations
 
 MVP :
 
-- Typer les données
-- Ajouter un selecteur d'age pour ensuite scroller dans le tableau
-- Ajouter un store pour stocker les données et les transferer vers le tableau
-- Ajouter une modale pour ajouter des vaccinations deja effectuées ou non par l'utilisateur
-- Stocker les données dans le local storage
+- [x] Typer les données
+- [x] Ajouter un selecteur d'age
+- [x] Ajouter un store pour stocker les données et les transferer vers le tableau
+- [ ] scroll automatique horizontal dans le tableau suivant l'age
+- [ ] Ajouter une modale pour ajouter des vaccinations deja effectuées ou non par l'utilisateur
+- [ ] Stocker les données dans le local storage
 
 ### la suite, ajouter des fonctionnalités comme :
 
 - l'utilisateur peut ajouter d'autres vaccins
 - les donées sont stockées dans une base de données SQL postgresql
 - ajouter des annimations sur le site
+
+## Déploiement
+
+Ajout d'une action github pour déployer sur vercel pour ainsi securiser le deployment de la branche utilisée par défault "main"
+
+![GitHub Action](./public/ci_github-action.png)
