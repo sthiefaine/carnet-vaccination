@@ -19,9 +19,11 @@ watch(
     <span class="age-text">J'ai</span>
     <div class="age-selector-container">
       <input
+        class="age-input"
         type="number"
         min="1"
         max="100"
+        placeholder="1"
         v-model="ageStore.age"
         @input="ageStore.setAge(ageStore.age, ageStore.monthOrYear)"
       />
@@ -54,6 +56,13 @@ watch(
   font-size: 1.5rem;
 }
 
+.age-input {
+  padding: 0.5rem 1rem;
+  width: 30px;
+  border-radius: 12px;
+  text-align: left;
+}
+
 .age-selector-container {
   display: flex;
   flex-direction: row;
@@ -68,6 +77,7 @@ button {
   border-radius: 12px;
   background-color: #fff;
   cursor: pointer;
+  border: none;
 }
 
 .button-active {

@@ -2,8 +2,10 @@
 import { ref, watch, onMounted } from 'vue'
 import { datesList, vaccines } from './TableSite.data'
 import { useAgeStore } from '@/stores/ageStore'
+import { useModalStore } from '@/stores/modalStore'
 
 const ageStore = useAgeStore()
+const modalStore = useModalStore()
 
 const dateRefs = ref<{ [key: string]: HTMLTableCellElement | null }>({})
 
@@ -38,6 +40,14 @@ const scrollToAge = () => {
   }
 }
 
+const handleModal = () => {
+  if (!modalStore.modalIsOpen) {
+    modalStore.openModal()
+  } else {
+    modalStore.closeModal()
+  }
+}
+
 // https://vuejs.org/guide/essentials/watchers.html
 //   { immediate: true }, option or OnMounted
 watch(
@@ -56,7 +66,7 @@ onMounted(() => {
     <table class="table">
       <thead>
         <tr>
-          <th>Age approprié</th>
+          <th><span>Age approprié</span><span>Vaccin</span></th>
           <th
             v-for="date in datesList"
             :key="date"
@@ -75,6 +85,7 @@ onMounted(() => {
           <td
             v-for="date in datesList"
             :key="date"
+            @click="() => handleModal()"
             :style="{
               backgroundColor:
                 vaccine?.sepcialRecommandedDosesDates && date === '65 ans et +'
@@ -117,11 +128,11 @@ onMounted(() => {
 
 th,
 td {
-  border: 1px solid #ccc;
   padding: 6px;
   text-align: center;
   text-wrap: nowrap;
   min-width: 50px;
+  height: 55px;
 }
 
 th:first-of-type {
@@ -132,7 +143,6 @@ th {
   font-size: medium;
   font-weight: normal;
   color: black;
-  background-color: #f4f4f4;
 }
 
 td:first-of-type {
@@ -149,8 +159,12 @@ td {
 thead > tr > th:first-of-type {
   position: sticky;
   left: 0;
-  height: 55px;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
   background-color: white;
 }
 
@@ -174,7 +188,7 @@ thead > tr > th:not(:first-of-type) {
 tr {
   color: white;
   background-color: #f9f9f9;
-  height: 60px;
+  height: 50px;
 }
 
 .recomanded-dose {

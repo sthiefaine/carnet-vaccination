@@ -3,6 +3,11 @@ import HeaderSite from './components/Header/HeaderSite.vue'
 import FooterSite from './components/Footer/FooterSite.vue'
 import TableSite from './components/Table/TableSite.vue'
 import AgeSelector from './components/AgeSelector/AgeSelector.vue'
+import ModalSite from './components/Modal/ModalSite.vue'
+
+import { useModalStore } from './stores/modalStore'
+
+const modalStore = useModalStore()
 </script>
 
 <template>
@@ -16,6 +21,7 @@ import AgeSelector from './components/AgeSelector/AgeSelector.vue'
     </section>
   </main>
   <FooterSite />
+  <ModalSite v-if="modalStore.modalIsOpen" />
 </template>
 
 <style scoped>

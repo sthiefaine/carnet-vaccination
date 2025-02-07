@@ -6,10 +6,6 @@ export const useAgeStore = defineStore('ageStore', () => {
   const monthOrYear = ref<'ans' | 'mois'>('ans')
   const selectedAge = ref<string>('14 ans')
 
-  /*   const updateSelectedAge = () => {
-    selectedAge.value = `${age.value} ${monthOrYear.value}`
-  } */
-
   function setAge(newAge: number, unit: 'ans' | 'mois') {
     age.value = newAge
     monthOrYear.value = unit
