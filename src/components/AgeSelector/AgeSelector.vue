@@ -1,43 +1,36 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { watch } from 'vue'
+import { useAgeStore } from '@/stores/ageStore'
 
-const age = ref(20)
-const selectedAge = ref('')
-const monthOrYear = ref<'ans' | 'mois'>('ans')
-
-const updateSelectedAge = () => {
-  selectedAge.value = `${age.value}${monthOrYear.value}`
-}
-
-const handleAgeChange = (value: 'mois' | 'ans') => {
-  monthOrYear.value = value
-  updateSelectedAge()
-}
+const ageStore = useAgeStore()
 
 // https://vuejs.org/guide/essentials/watchers.html
-watch(age, (newAge) => {
-  // Convertir en années si l'âge est >= 24 mois
-  if (monthOrYear.value === 'mois' && newAge >= 24) {
-    age.value = Math.floor(newAge / 12)
-    monthOrYear.value = 'ans'
-  }
-  updateSelectedAge()
-})
+watch(
+  () => ageStore.age,
+  (newAge) => {
+    if (ageStore.monthOrYear === 'mois' && newAge >= 24) {
+      ageStore.setAge(Math.floor(newAge / 12), 'ans')
+    }
+  },
+)
 </script>
 
 <template>
   <div class="age-selector">
     <span class="age-text">J'ai</span>
     <div class="age-selector-container">
-      <input type="number" min="1" max="100" v-model="age" />
+      <input type="number" min="1" max="100" v-model="ageStore.age" />
       <button
-        :disabled="age >= 24"
-        :class="monthOrYear === 'mois' ? 'button-active' : ''"
-        @click="handleAgeChange('mois')"
+        :disabled="ageStore.age >= 24"
+        :class="ageStore.monthOrYear === 'mois' ? 'button-active' : ''"
+        @click="ageStore.setAge(ageStore.age, 'mois')"
       >
         Mois
       </button>
-      <button :class="monthOrYear === 'ans' ? 'button-active' : ''" @click="handleAgeChange('ans')">
+      <button
+        :class="ageStore.monthOrYear === 'ans' ? 'button-active' : ''"
+        @click="ageStore.setAge(ageStore.age, 'ans')"
+      >
         Ans
       </button>
     </div>

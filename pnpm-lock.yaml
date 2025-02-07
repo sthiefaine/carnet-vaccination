@@ -16,6 +16,7 @@ specifiers:
   jiti: ^2.4.2
   jsdom: ^26.0.0
   npm-run-all2: ^7.0.2
+  pinia: ^2.3.1
   prettier: ^3.4.2
   typescript: ~5.7.3
   vite: ^6.0.11
@@ -26,6 +27,7 @@ specifiers:
 
 dependencies:
   '@typescript-eslint/utils': 8.23.0_t2ivh2ae2tkac32movctuzz4nu
+  pinia: 2.3.1_5esbry5fwhrlkbjcug25r4dl2a
   vue: 3.5.13_typescript@5.7.3
 
 devDependencies:
@@ -1301,6 +1303,10 @@ packages:
       de-indent: 1.0.2
       he: 1.2.0
     dev: true
+
+  /@vue/devtools-api/6.6.4:
+    resolution: {integrity: sha512-sGhTPMuXqZ1rVOk32RylztWkfXTRhuS7vgAKv0zjqk8gbsHkJ7xfFf+jbySxt7tWObEJwyKaHMikV/WGDiQm8g==}
+    dev: false
 
   /@vue/devtools-core/7.7.1_vite@6.1.0+vue@3.5.13:
     resolution: {integrity: sha512-W4CRrSZJodNIfrPO7/dXF6ZS0QyOY6PCYVhpSoTSx9+nh2wpZxcS1482lAdKM0FTlaoApHV6jXT95Me90hSaBA==}
@@ -2693,6 +2699,23 @@ packages:
     hasBin: true
     dev: true
 
+  /pinia/2.3.1_5esbry5fwhrlkbjcug25r4dl2a:
+    resolution: {integrity: sha512-khUlZSwt9xXCaTbbxFYBKDc/bWAGWJjOgvxETwkTN7KRm66EeT1ZdZj6i2ceh9sP2Pzqsbc704r2yngBrxBVug==}
+    peerDependencies:
+      typescript: '>=4.4.4'
+      vue: ^2.7.0 || ^3.5.11
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@vue/devtools-api': 6.6.4
+      typescript: 5.7.3
+      vue: 3.5.13_typescript@5.7.3
+      vue-demi: 0.14.10_vue@3.5.13
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+    dev: false
+
   /postcss-selector-parser/6.1.2:
     resolution: {integrity: sha512-Q8qQfPiZ+THO/3ZrOrO0cJJKfpYCagtMUkXbnEfmgUjwXg6z/WBeOyS9APBBPCTSiDV+s4SwQGu8yFsiMRIudg==}
     engines: {node: '>=4'}
@@ -3304,6 +3327,21 @@ packages:
   /vue-component-type-helpers/2.2.0:
     resolution: {integrity: sha512-cYrAnv2me7bPDcg9kIcGwjJiSB6Qyi08+jLDo9yuvoFQjzHiPTzML7RnkJB1+3P6KMsX/KbCD4QE3Tv/knEllw==}
     dev: true
+
+  /vue-demi/0.14.10_vue@3.5.13:
+    resolution: {integrity: sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.5.13_typescript@5.7.3
+    dev: false
 
   /vue-eslint-parser/9.4.3_eslint@9.19.0:
     resolution: {integrity: sha512-2rYRLWlIpaiN8xbPiDyXZXRgLGOtWxERV7ND5fFAv5qo1D2N9Fu9MNajBNc6o13lZ+24DAWCkQCvj4klgmcITg==}

@@ -8,7 +8,8 @@
 .footer {
   display: block;
   width: 100%;
-  height: 42px;
+  min-height: 42px;
+  margin-top: 20px;
   background-color: #42b983;
   display: flex;
   justify-content: center;
