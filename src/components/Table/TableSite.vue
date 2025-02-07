@@ -3,9 +3,11 @@ import { ref, watch, onMounted } from 'vue'
 import { datesList, vaccines } from './TableSite.data'
 import { useAgeStore } from '@/stores/ageStore'
 import { useModalStore } from '@/stores/modalStore'
+import { useVaccineStore } from '@/stores/vaccineStore'
 
 const ageStore = useAgeStore()
 const modalStore = useModalStore()
+const vaccineStore = useVaccineStore()
 
 const dateRefs = ref<{ [key: string]: HTMLTableCellElement | null }>({})
 
@@ -40,12 +42,22 @@ const scrollToAge = () => {
   }
 }
 
-const handleModal = () => {
+const handleModal = (vaccineName: string, takenDate: string) => {
   if (!modalStore.modalIsOpen) {
+    vaccineStore.updateCurrentSelection(vaccineName, takenDate)
     modalStore.openModal()
   } else {
+    vaccineStore.updateCurrentSelection('', '')
     modalStore.closeModal()
   }
+}
+
+const isDateValidated = (vaccineName: string, takenDate: string): boolean => {
+  const isTaken = vaccineStore.vaccinationList.findIndex(
+    (vaccine) => vaccine.vaccineName === vaccineName && vaccine.takenDate === takenDate,
+  )
+
+  return isTaken === -1 ? false : true
 }
 
 // https://vuejs.org/guide/essentials/watchers.html
@@ -85,7 +97,8 @@ onMounted(() => {
           <td
             v-for="date in datesList"
             :key="date"
-            @click="() => handleModal()"
+            @click="() => handleModal(vaccine.name, date)"
+            :class="isDateValidated(vaccine.name, date) ? 'validated' : ''"
             :style="{
               backgroundColor:
                 vaccine?.sepcialRecommandedDosesDates && date === '65 ans et +'
@@ -113,6 +126,12 @@ onMounted(() => {
   overflow-y: scroll;
   max-width: 100vw;
   overflow-x: auto;
+}
+
+.validated {
+  background-image: url('@/assets/success.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .table {
