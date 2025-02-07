@@ -34,16 +34,13 @@ describe('Age Selector render', () => {
     const input = wrapper.find('input')
     await input.setValue(24)
 
-    // https://test-utils.vuejs.org/api/#flushpromises
-    // await flushPromises()
-
     expect(input.element.value).toBe('24')
 
     const activeButton = wrapper.find('.button-active')
     expect(activeButton.text()).toBe('Ans')
   })
 
-  it('age >= 24 mois button need to be "Ans" and value "2"', async () => {
+  it('age >= 24 mois button need to be "Ans" and value "24"', async () => {
     // click on button "mois"
     const button = wrapper.find('button')
     await button.trigger('click')
@@ -54,7 +51,7 @@ describe('Age Selector render', () => {
     // https://test-utils.vuejs.org/api/#flushpromises
     await flushPromises()
 
-    expect(input.element.value).toBe('2')
+    expect(input.element.value).toBe('24')
 
     const activeButton = wrapper.find('.button-active')
     expect(activeButton.text()).toBe('Ans')

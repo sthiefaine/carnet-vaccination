@@ -4,12 +4,11 @@ import { useAgeStore } from '@/stores/ageStore'
 
 const ageStore = useAgeStore()
 
-// https://vuejs.org/guide/essentials/watchers.html
 watch(
   () => ageStore.age,
   (newAge) => {
     if (ageStore.monthOrYear === 'mois' && newAge >= 24) {
-      ageStore.setAge(Math.floor(newAge / 12), 'ans')
+      ageStore.setAge(newAge, 'ans')
     }
   },
 )
@@ -19,7 +18,13 @@ watch(
   <div class="age-selector">
     <span class="age-text">J'ai</span>
     <div class="age-selector-container">
-      <input type="number" min="1" max="100" v-model="ageStore.age" />
+      <input
+        type="number"
+        min="1"
+        max="100"
+        v-model="ageStore.age"
+        @input="ageStore.setAge(ageStore.age, ageStore.monthOrYear)"
+      />
       <button
         :disabled="ageStore.age >= 24"
         :class="ageStore.monthOrYear === 'mois' ? 'button-active' : ''"
