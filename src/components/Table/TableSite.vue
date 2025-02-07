@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import type { Vaccine } from './TableSite.types'
 
-const datesThead = ref([
+const datesThead = ref<string[]>([
   '1 mois',
   '2 mois',
   '3 mois',
@@ -18,7 +19,7 @@ const datesThead = ref([
   '65 ans et +',
 ])
 
-const vaccines = ref([
+const vaccines = ref<Vaccine[]>([
   {
     id: 1,
     name: 'BCG',
