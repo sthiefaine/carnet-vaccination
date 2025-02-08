@@ -17,6 +17,7 @@ const modalStore = useModalStore()
     <AgeSelector />
 
     <section>
+      <h2 class="section-title">Ajouter mes vaccinations</h2>
       <TableSite />
     </section>
   </main>
@@ -31,5 +32,10 @@ const modalStore = useModalStore()
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  margin-left: 1rem;
 }
 </style>

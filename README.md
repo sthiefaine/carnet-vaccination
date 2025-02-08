@@ -17,9 +17,9 @@ MVP :
 - [x] Typer les données
 - [x] Ajouter un selecteur d'age
 - [x] Ajouter un store pour stocker les données et les transferer vers le tableau
-- [ ] scroll automatique horizontal dans le tableau suivant l'age
-- [ ] Ajouter une modale pour ajouter des vaccinations deja effectuées ou non par l'utilisateur
-- [ ] Stocker les données dans le local storage
+- [x] scroll automatique horizontal dans le tableau suivant l'age
+- [x] Ajouter une modale pour ajouter des vaccinations deja effectuées ou non par l'utilisateur
+- [x] Stocker les données dans le local storage
 
 ### la suite, ajouter des fonctionnalités comme :
 
@@ -29,6 +29,6 @@ MVP :
 
 ## Déploiement
 
-Ajout d'une action github pour déployer sur vercel pour ainsi securiser le deployment de la branche utilisée par défault "main"
+Ajout d'une action github pour effectuer les tests unitaires avant dedéployer sur vercel pour ainsi securiser le deployment de la branche utilisée par défault "main"
 
 ![GitHub Action](./public/ci_github-action.png)
