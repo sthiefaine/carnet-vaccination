@@ -146,6 +146,8 @@ onMounted(() => {
   text-transform: capitalize;
   width: max-content;
   cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .vaccin-name::after {
@@ -163,6 +165,8 @@ onMounted(() => {
 
 .vaccin-date {
   cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 th,
