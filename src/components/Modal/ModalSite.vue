@@ -25,6 +25,18 @@ const vaccineIsOnList = computed(() => {
 
   return index === -1 ? false : true
 })
+
+const getvaccineName = computed(() => {
+  const result = vaccineStore.vaccinesData.find(
+    (vaccination) => vaccination.name === vaccineStore.currentSelection[0],
+  )
+
+  return result
+    ? result.longName
+      ? result.longName + ' ' + result.name
+      : result.name
+    : vaccineStore.currentSelection[0]
+})
 </script>
 
 // https://vuejs.org/guide/built-ins/teleport.html
@@ -34,7 +46,7 @@ const vaccineIsOnList = computed(() => {
       <div class="modal-content">
         <button class="button-close" @click="modalStore.closeModal">X</button>
         <h2 class="modal-title">Prise du vaccin</h2>
-        <p class="modal-text">{{ vaccineStore.currentSelection[0] }}</p>
+        <p class="modal-text">{{ getvaccineName }}</p>
         <div class="vaccin-buttons">
           <button v-show="!vaccineIsOnList" class="button-add" @click="handleAddVaccine">
             Ajouter

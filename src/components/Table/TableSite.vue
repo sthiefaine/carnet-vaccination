@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch, onMounted } from 'vue'
-import { datesList, vaccines } from './TableSite.data'
+import { datesList } from './TableSite.data'
 import { useAgeStore } from '@/stores/ageStore'
 import { useModalStore } from '@/stores/modalStore'
 import { useVaccineStore } from '@/stores/vaccineStore'
@@ -90,7 +90,7 @@ onMounted(() => {
       </thead>
 
       <tbody>
-        <tr v-for="vaccine in vaccines" :key="vaccine.name">
+        <tr v-for="vaccine in vaccineStore.vaccinesData" :key="vaccine.name">
           <td class="vaccin-name" :style="{ backgroundColor: vaccine.color }">
             {{ vaccine.name }}
           </td>

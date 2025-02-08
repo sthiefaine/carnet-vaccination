@@ -1,3 +1,5 @@
+import { vaccines } from '@/data/vaccines'
+import type { Vaccine } from '@/types/vaccines'
 import { defineStore } from 'pinia'
 import { ref, watch } from 'vue'
 
@@ -10,6 +12,7 @@ export const useVaccineStore = defineStore('VaccineStore', () => {
   const initialData = localStorage.getItem('vaccinations')
   const vaccinationList = ref<Vaccination[]>(initialData ? JSON.parse(initialData) : [])
   const currentSelection = ref<[string, string]>(['', ''])
+  const vaccinesData = ref<Vaccine[]>(vaccines)
 
   watch(
     vaccinationList,
@@ -51,6 +54,7 @@ export const useVaccineStore = defineStore('VaccineStore', () => {
   }
 
   return {
+    vaccinesData,
     vaccinationList,
     addVaccination,
     removeVaccination,
