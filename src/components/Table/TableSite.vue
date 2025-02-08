@@ -100,6 +100,7 @@ onMounted(() => {
             v-for="date in datesList"
             :key="date"
             @click="() => handleModal(vaccine.name, date, 'vaccin')"
+            class="vaccin-date"
             :class="isDateValidated(vaccine.name, date) ? 'validated' : ''"
             :style="{
               backgroundColor:
@@ -144,6 +145,7 @@ onMounted(() => {
 .vaccin-name {
   text-transform: capitalize;
   width: max-content;
+  cursor: pointer;
 }
 
 .vaccin-name::after {
@@ -157,6 +159,10 @@ onMounted(() => {
   background-image: url('@/assets/info.svg');
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.vaccin-date {
+  cursor: pointer;
 }
 
 th,
