@@ -128,7 +128,7 @@ onMounted(() => {
 }
 
 .validated {
-  background-image: url('@/assets/success.png');
+  background-image: url('@/assets/success.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -148,9 +148,16 @@ th,
 td {
   padding: 6px;
   text-align: center;
-  text-wrap: nowrap;
   min-width: 50px;
   height: 55px;
+  border: 1px solid #ccc;
+}
+
+td:not(:first-child) {
+  width: 63px !important;
+  height: 63px !important;
+  max-width: 63px !important;
+  max-height: 63px !important;
 }
 
 th:first-of-type {
@@ -168,6 +175,7 @@ td:first-of-type {
   left: 0;
   top: 67px;
   z-index: 1;
+  text-wrap: nowrap;
 }
 
 td {
