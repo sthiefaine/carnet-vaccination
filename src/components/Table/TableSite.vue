@@ -34,7 +34,6 @@ const findDateKey = (age: number, unit: 'ans' | 'mois'): string => {
 }
 
 const scrollToAge = () => {
-  console.log('scrollToAge called')
   const dateToScroll = findDateKey(ageStore.age, ageStore.monthOrYear)
   const cell = dateRefs.value[dateToScroll]
   if (cell) {
@@ -42,13 +41,13 @@ const scrollToAge = () => {
   }
 }
 
-const handleModal = (vaccineName: string, takenDate: string) => {
+const handleModal = (vaccineName: string, takenDate: string, type: 'info' | 'vaccin') => {
   if (!modalStore.modalIsOpen) {
     vaccineStore.updateCurrentSelection(vaccineName, takenDate)
-    modalStore.openModal()
+    modalStore.openModal(type)
   } else {
     vaccineStore.updateCurrentSelection('', '')
-    modalStore.closeModal()
+    modalStore.closeModal(type)
   }
 }
 
@@ -61,7 +60,6 @@ const isDateValidated = (vaccineName: string, takenDate: string): boolean => {
 }
 
 // https://vuejs.org/guide/essentials/watchers.html
-//   { immediate: true }, option or OnMounted
 watch(
   () => ageStore.selectedAge,
   () => scrollToAge(),
@@ -91,13 +89,17 @@ onMounted(() => {
 
       <tbody>
         <tr v-for="vaccine in vaccineStore.vaccinesData" :key="vaccine.name">
-          <td class="vaccin-name" :style="{ backgroundColor: vaccine.color }">
+          <td
+            class="vaccin-name"
+            :style="{ backgroundColor: vaccine.color }"
+            @click="() => handleModal(vaccine.name, '', 'info')"
+          >
             {{ vaccine.name }}
           </td>
           <td
             v-for="date in datesList"
             :key="date"
-            @click="() => handleModal(vaccine.name, date)"
+            @click="() => handleModal(vaccine.name, date, 'vaccin')"
             :class="isDateValidated(vaccine.name, date) ? 'validated' : ''"
             :style="{
               backgroundColor:

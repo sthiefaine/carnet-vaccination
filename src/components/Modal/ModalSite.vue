@@ -8,12 +8,12 @@ const vaccineStore = useVaccineStore()
 
 const handleAddVaccine = () => {
   vaccineStore.addVaccination()
-  modalStore.closeModal()
+  modalStore.closeModal('vaccin')
 }
 
 const handleRemoveVaccine = () => {
   vaccineStore.removeVaccination()
-  modalStore.closeModal()
+  modalStore.closeModal('vaccin')
 }
 
 const vaccineIsOnList = computed(() => {
@@ -42,9 +42,13 @@ const getvaccineName = computed(() => {
 // https://vuejs.org/guide/built-ins/teleport.html
 <template>
   <Teleport to="#modal-root, body">
-    <div v-if="modalStore.modalIsOpen" class="modal-overlay">
+    <div
+      v-if="modalStore.modalIsOpen"
+      class="modal-overlay"
+      @click.self="modalStore.closeModal('vaccin')"
+    >
       <div class="modal-content">
-        <button class="button-close" @click="modalStore.closeModal">X</button>
+        <button class="button-close" @click="modalStore.closeModal('vaccin')">X</button>
         <h2 class="modal-title">Prise du vaccin</h2>
         <p class="modal-text">{{ getvaccineName }}</p>
         <div class="vaccin-buttons">

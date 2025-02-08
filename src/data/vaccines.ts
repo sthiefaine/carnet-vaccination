@@ -6,7 +6,7 @@ export const vaccines: Vaccine[] = [
     name: 'BCG',
     longName: 'Tuberculose',
     information:
-      "La vaccination contre la tuberculose est leplus souvent recommandée à partir de 1 mois et jusqu 'à l'âge de 15 ans chez les enfants exposés à un risque élevé de tuberculose.",
+      "La vaccination contre la tuberculose est le plus souvent recommandée à partir de 1 mois et jusqu'à l'âge de 15 ans chez les enfants exposés à un risque élevé de tuberculose.",
     recomandedDosesDates: ['1 mois'],
     color: '#BA4D97',
   },
@@ -50,7 +50,7 @@ export const vaccines: Vaccine[] = [
     id: 5,
     name: 'Hépatite B',
     information:
-      "Si la vaccination n'a pas été effectuée au cours jusqu'à 15 ans inclus. de la 1ere année de vie. A partir de 1o ans, elle est recommandée uniquement chez les personnes exposées au risque d'hépatite B.",
+      "Si la vaccination n'a pas été effectuée au cours de la 1ere année de vie, elle peut être réalisée jusqu'à 15 ans inclus. de la 1ere année de vie. A partir de 16 ans, elle est recommandée uniquement chez les personnes exposées au risque d'hépatite B.",
     recomandedDosesDates: ['2 mois', '4 mois', '11 mois'],
     color: '#FDC301',
   },
@@ -91,7 +91,7 @@ export const vaccines: Vaccine[] = [
     id: 10,
     name: 'méningocoque B',
     information:
-      "Un rattrapage est possible jusqu'à l'âge de 2 ans pour les nourrissons n'ayant pas reçu les trois doses de vaccins recommandées à 3,5 et 12 mois.",
+      "Un rattrapage est possible jusqu'à l'âge de 2 ans pour les nourrissons n'ayant pas reçu les trois doses de vaccins recommandées à 3, 5 et 12 mois.",
     recomandedDosesDates: ['3 mois', '5 mois', '12 mois'],
     color: '#EA579A',
   },

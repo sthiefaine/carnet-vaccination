@@ -4,6 +4,7 @@ import FooterSite from './components/Footer/FooterSite.vue'
 import TableSite from './components/Table/TableSite.vue'
 import AgeSelector from './components/AgeSelector/AgeSelector.vue'
 import ModalSite from './components/Modal/ModalSite.vue'
+import ModalInfo from './components/Modal/Info/ModalInfo.vue'
 
 import { useModalStore } from './stores/modalStore'
 
@@ -22,7 +23,8 @@ const modalStore = useModalStore()
     </section>
   </main>
   <FooterSite />
-  <ModalSite v-if="modalStore.modalIsOpen" />
+  <ModalSite v-if="modalStore.modalIsOpen && modalStore.modalType === 'vaccin'" />
+  <ModalInfo v-if="modalStore.modalIsOpen && modalStore.modalType === 'info'" />
 </template>
 
 <style scoped>
