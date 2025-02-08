@@ -146,6 +146,19 @@ onMounted(() => {
   width: max-content;
 }
 
+.vaccin-name::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 15px;
+  height: 15px;
+
+  background-image: url('@/assets/info.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 th,
 td {
   padding: 6px;
@@ -217,11 +230,5 @@ tr {
   color: white;
   background-color: #f9f9f9;
   height: 50px;
-}
-
-.recomanded-dose {
-  display: inline-block;
-  width: 20px;
-  height: 15px;
 }
 </style>
