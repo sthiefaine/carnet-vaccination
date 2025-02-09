@@ -6,24 +6,22 @@ import { computed } from 'vue'
 const modalStore = useModalStore()
 const vaccineStore = useVaccineStore()
 
-const getvaccineName = computed(() => {
-  const result = vaccineStore.vaccinesData.find(
-    (vaccination) => vaccination.name === vaccineStore.currentSelection[0],
-  )
-
-  return result
-    ? result.longName
-      ? result.longName + ' ' + result.name
-      : result.name
-    : vaccineStore.currentSelection[0]
-})
-
 const getvaccine = computed(() => {
   const result = vaccineStore.vaccinesData.find(
     (vaccination) => vaccination.name === vaccineStore.currentSelection[0],
   )
 
   return result
+})
+
+const getvaccineName = computed(() => {
+  const result = getvaccine.value
+
+  return result
+    ? result.longName
+      ? result.longName + ' ' + result.name
+      : result.name
+    : vaccineStore.currentSelection[0]
 })
 </script>
 
