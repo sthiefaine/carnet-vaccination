@@ -32,3 +32,13 @@ MVP :
 Ajout d'une action github pour effectuer les tests unitaires avant dedéployer sur vercel pour ainsi securiser le deployment de la branche utilisée par défault "main"
 
 ![GitHub Action](./public/ci_github-action.png)
+
+# La suite la V2
+
+Elle va etre dev sur develop, et la branche main sera utilisée pour le déploiement
+Ajout d'un routeur pour la gestion des pages.
+
+- Page d'accueil - affichage de la liste des vaccins
+
+Ajout de la creation d'un compte utilisateur.
+Ajout de la gestion des données de l'utilisateur.

@@ -14,17 +14,17 @@ const dateRefs = ref<{ [key: string]: HTMLTableCellElement | null }>({})
 const findDateKey = (age: number, unit: 'ans' | 'mois'): string => {
   if (unit === 'mois') {
     if (age >= 6 && age <= 10) return `5 mois`
-    if (age >= 11 && age <= 13) return `11 mois`
+    if (age >= 11 && age <= 15) return `11 mois`
     if (age >= 16 && age <= 18) return `16-18 mois`
     if (age >= 18) return `16-18 mois`
     return ageStore.selectedAge
   } else if (unit === 'ans') {
     if (age === 1) return `12 mois`
     if (age >= 2 && age <= 5) return `16-18 mois`
-    if (age >= 6 && age <= 11) return `6 ans`
+    if (age >= 6 && age <= 10) return `6 ans`
     if (age >= 11 && age <= 13) return `11-13 ans`
-    if (age >= 14 && age <= 25) return `14 ans`
-    if (age >= 25 && age <= 45) return `25 ans`
+    if (age >= 14 && age <= 24) return `14 ans`
+    if (age >= 25 && age <= 44) return `25 ans`
     if (age >= 45 && age <= 65) return `45 ans`
     if (age >= 65) return `65 ans et +`
     return ageStore.selectedAge
